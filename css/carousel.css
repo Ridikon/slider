@@ -1,0 +1,61 @@
+@keyframes move {
+    from {
+        left: 50%;
+        top: 0;
+        transform:  rotate(-90deg) translateX(-50%);
+    }
+
+    to {
+        left: 50%;
+        top: 0;
+        transform:  rotate(0deg) translateX(-50%);
+    }
+}
+
+#carousel {
+    position: relative;
+    background: #222222;
+    height: 100vh;
+}
+
+.carousel-item {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.carousel-item img {
+    width: auto;
+    height: 100%;
+}
+
+.item-active {
+    opacity: 1;
+}
+
+.buttons {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    border: none;
+    outline: none;
+    width: 15%;
+    background: transparent;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.buttons button:hover {
+    opacity: .5;
+    background: #000;
+}
