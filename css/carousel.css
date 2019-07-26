@@ -13,24 +13,19 @@
 }
 
 #carousel {
-    position: relative;
     background: #222222;
     height: 100vh;
 }
 
 .carousel-item {
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     position: absolute;
     left: 50%;
-    top: 0;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 1s;
-}
-
-.carousel-item img {
-    width: auto;
-    height: 100%;
 }
 
 .item-active {

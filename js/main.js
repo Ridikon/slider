@@ -2,8 +2,8 @@ let slides = null;
 const prev = document.querySelector('#prev');
 const next = document.querySelector('#next');
 
-const perPage = 50;
-const url = `https://api.unsplash.com/photos/?per_page=${perPage}&client_id=99ab3726f51790918578fcbab308f1191c07f8e4ae37a7bd71b31e28276f8313`
+const perPage = 100;
+const url = `https://api.unsplash.com/photos/?per_page=${perPage}&client_id=99ab3726f51790918578fcbab308f1191c07f8e4ae37a7bd71b31e28276f8313`;
 let counter = 0;
 
 function httpGet(url) {
@@ -41,22 +41,16 @@ httpGet(url).then(response => {
     const slidesData = JSON.parse(response);
     const slider = document.querySelector('#carousel');
 
-    console.log(slidesData.length)
-
-    slidesData.forEach((item, i, arr) => {
-        let elemDiv = document.createElement('div');
-        elemDiv.classList.add('carousel-item');
+    slidesData.forEach((item, i) => {
+        let elemImg = document.createElement('img');
+        elemImg.classList.add('carousel-item');
+        elemImg.setAttribute('src', item.urls.regular);
 
         if (i === 0) {
-            elemDiv.classList.add('item-active')
+            elemImg.classList.add('item-active')
         }
 
-        let elemImg = document.createElement('img');
-        elemImg.setAttribute('src', item.urls.regular)
-
-        elemDiv.appendChild(elemImg);
-
-        slider.appendChild(elemDiv)
+        slider.appendChild(elemImg);
         slides = document.querySelectorAll('.carousel-item');
     })
 });
