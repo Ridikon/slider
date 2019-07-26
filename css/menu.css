@@ -1,6 +1,6 @@
 .menu {
     position: absolute;
-    top: -50px;
+    top: -95px;
     left: 0;
     color: #fff;
     padding: 20px 0;
@@ -36,10 +36,10 @@
     background: #447988;
 }
 
-.active {
+.menu-play button.active {
     background: #f95259;
 }
 
-.active:hover {
+.menu-play button.active:hover {
     background: #9a353c;
 }
