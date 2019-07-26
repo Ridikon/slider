@@ -1,0 +1,45 @@
+.menu {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    color: #fff;
+    padding: 20px 0;
+    transition: top .5s;
+    width: 100%;
+    text-align: center;
+}
+
+.menu:hover {
+    top: 0;
+}
+
+.menu-active {
+    top: 0;
+}
+
+.menu > div {
+    display: inline-block;
+}
+
+.menu > div:not(:last-child) {
+    margin-right: 20px;
+}
+
+.menu-play button {
+    border: none;
+    background: #83bccb;
+    border-radius: 10%;
+    padding: 5px;
+}
+
+.menu-play button:hover {
+    background: #447988;
+}
+
+.active {
+    background: #f95259;
+}
+
+.active:hover {
+    background: #9a353c;
+}

@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
@@ -23,13 +24,41 @@
 
         <div id="carousel"></div>
 
+        <div class="menu" id="menu">
+            <div class="menu-counter">
+                <label for="selector">Select image count</label>
+                <select name="" id="selector" onChange="getPerPage()">
+                    <option value="10">10</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="70">70</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+            <div class="menu-interval">
+                <label for="interval">Select slider interval</label>
+                <select name="" id="interval" onChange="getInterval()">
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="7">7</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
+            <div class="menu-play">
+                <label>Slideshow</label>
+                <button id="play">Play</button>
+                <button id="pause">Pause</button>
+            </div>
+        </div>
+
         <div class="buttons">
             <button id="prev">Prev</button>
             <button id="next">Next</button>
         </div>
 
-<!--        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-<!--        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>-->
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
