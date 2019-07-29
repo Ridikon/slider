@@ -1,3 +1,5 @@
+'use strict';
+
 let slides = null,
   perPage = 10,
   sliderInterval = 1,
@@ -28,10 +30,12 @@ hammer.on("swiperight", function() {
     prevSlide();
 });
 
+getImages(url);
 play.onclick = playSlider;
-
 pause.onclick = stopSlider;
 fullscreen.onclick = toggleFullScreen;
+next.onclick = nextSlide;
+prev.onclick = prevSlide;
 
 if (document.addEventListener) {
     document.addEventListener('webkitfullscreenchange', exitHandler, false);
@@ -139,10 +143,7 @@ function getImages(url) {
     })
 }
 
-getImages(url);
 
-next.onclick = nextSlide;
-prev.onclick = prevSlide;
 
 function prevSlide() {
     slides[counter].classList.remove('item-active');
