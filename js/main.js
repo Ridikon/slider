@@ -28,10 +28,6 @@ hammer.on("swiperight", function() {
     prevSlide();
 });
 
-hammer.on("swipedown", function() {
-    menu.classList.add('menu-active');
-});
-
 play.onclick = playSlider;
 
 pause.onclick = stopSlider;
@@ -145,21 +141,10 @@ function getImages(url) {
 
 getImages(url);
 
-// prev.onclick = () => {
-//     slides[counter].classList.remove('item-active');
-//     counter--;
-//
-//     if (counter < 0) {
-//         counter = slides.length - 1;
-//     }
-//     slides[counter].classList.add('item-active');
-// };
-
 next.onclick = nextSlide;
 prev.onclick = prevSlide;
 
 function prevSlide() {
-    console.log('counter', counter)
     slides[counter].classList.remove('item-active');
     counter--;
 
@@ -170,7 +155,6 @@ function prevSlide() {
 }
 
 function nextSlide() {
-    console.log('counter', counter)
     slides[counter].classList.remove('item-active');
     counter++;
 
