@@ -1,20 +1,13 @@
 .menu {
     position: absolute;
-    top: -95px;
+    top: -100px;
     left: 0;
     color: #fff;
     padding: 20px 0;
     transition: top .5s;
     width: 100%;
     text-align: center;
-}
-
-.menu:hover {
-    top: 0;
-}
-
-.menu-active {
-    top: 0;
+    z-index: 2;
 }
 
 .menu > div {
@@ -25,11 +18,31 @@
     margin-right: 20px;
 }
 
+.menu #fullscreen {
+    cursor: pointer;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.menu:hover {
+    top: 0;
+}
+
+.menu.menu-active {
+    top: 0;
+}
+
 .menu-play button {
     border: none;
     background: #83bccb;
     border-radius: 10%;
     padding: 5px;
+    outline: none;
+}
+
+.menu-play div {
+    cursor: pointer;
+    display: inline-block;
 }
 
 .menu-play button:hover {
@@ -42,4 +55,23 @@
 
 .menu-play button.active:hover {
     background: #9a353c;
+}
+
+@media screen and (max-width: 680px){
+    .menu {
+        top: -180px;
+    }
+
+    .menu > div {
+        display: block;
+    }
+
+    .menu > div:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .menu #fullscreen .material-icons {
+        font-size: 30px;
+    }
 }

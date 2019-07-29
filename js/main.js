@@ -15,22 +15,56 @@ const intervalSelector = document.querySelector('#intervalSelector');
 const menu = document.querySelector('#menu');
 const play = document.querySelector('#play');
 const pause = document.querySelector('#pause');
+const fullscreen = document.querySelector('#fullscreen');
+const fullscreenIcon = document.querySelector('#fullscreen .material-icons');
+
+const hammer = new Hammer(slider);
+
+hammer.on("panleft", function() {
+    nextSlide();
+});
+
+hammer.on("panright", function() {
+    prevSlide();
+});
+
+hammer.on("pandown", function() {
+    menu.classList.add('menu-active');
+});
 
 play.onclick = playSlider;
 
 pause.onclick = stopSlider;
+fullscreen.onclick = toggleFullScreen;
+
+if (document.addEventListener) {
+    document.addEventListener('webkitfullscreenchange', exitHandler, false);
+    document.addEventListener('mozfullscreenchange', exitHandler, false);
+    document.addEventListener('fullscreenchange', exitHandler, false);
+    document.addEventListener('MSFullscreenChange', exitHandler, false);
+}
+
+function exitHandler() {
+    if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+        fullscreenIcon.innerHTML = 'fullscreen';
+    }
+}
 
 function playSlider() {
+    if (playInterval) {
+        return;
+    }
     pause.classList.remove('active');
     play.classList.add('active');
     playInterval = setInterval(() => nextSlide(), sliderInterval * 1000);
 }
 
 function stopSlider() {
-    play.classList.remove('active');
-    pause.classList.add('active');
     if (playInterval) {
+        play.classList.remove('active');
+        pause.classList.add('active');
         clearInterval(playInterval);
+        playInterval = null;
     }
 }
 
@@ -111,7 +145,20 @@ function getImages(url) {
 
 getImages(url);
 
-prev.onclick = () => {
+// prev.onclick = () => {
+//     slides[counter].classList.remove('item-active');
+//     counter--;
+//
+//     if (counter < 0) {
+//         counter = slides.length - 1;
+//     }
+//     slides[counter].classList.add('item-active');
+// };
+
+next.onclick = nextSlide;
+prev.onclick = prevSlide;
+
+function prevSlide() {
     slides[counter].classList.remove('item-active');
     counter--;
 
@@ -119,9 +166,7 @@ prev.onclick = () => {
         counter = slides.length - 1;
     }
     slides[counter].classList.add('item-active');
-};
-
-next.onclick = nextSlide;
+}
 
 function nextSlide() {
     slides[counter].classList.remove('item-active');
@@ -132,4 +177,16 @@ function nextSlide() {
     }
 
     slides[counter].classList.add('item-active');
+}
+
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        fullscreenIcon.innerHTML = 'fullscreen_exit';
+        document.documentElement.requestFullscreen();
+    } else {
+        if (document.exitFullscreen) {
+            fullscreenIcon.innerHTML = 'fullscreen';
+            document.exitFullscreen();
+        }
+    }
 }
