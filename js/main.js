@@ -20,15 +20,15 @@ const fullscreenIcon = document.querySelector('#fullscreen .material-icons');
 
 const hammer = new Hammer(slider);
 
-hammer.on("panleft", function() {
+hammer.on("swipeleft", function() {
     nextSlide();
 });
 
-hammer.on("panright", function() {
+hammer.on("swiperight", function() {
     prevSlide();
 });
 
-hammer.on("pandown", function() {
+hammer.on("swipedown", function() {
     menu.classList.add('menu-active');
 });
 
@@ -159,6 +159,7 @@ next.onclick = nextSlide;
 prev.onclick = prevSlide;
 
 function prevSlide() {
+    console.log('counter', counter)
     slides[counter].classList.remove('item-active');
     counter--;
 
@@ -169,6 +170,7 @@ function prevSlide() {
 }
 
 function nextSlide() {
+    console.log('counter', counter)
     slides[counter].classList.remove('item-active');
     counter++;
 
