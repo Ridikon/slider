@@ -14,6 +14,10 @@
     transition: opacity 1s;
 }
 
+.desktop {
+    height: 100%;
+}
+
 .item-active {
     opacity: 1;
 }
