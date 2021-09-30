@@ -19,6 +19,7 @@ const play = document.querySelector('#play');
 const pause = document.querySelector('#pause');
 const fullscreen = document.querySelector('#fullscreen');
 const fullscreenIcon = document.querySelector('#fullscreen .material-icons');
+const isDesktop = window.innerWidth > window.innerHeight;
 
 const hammer = new Hammer(slider);
 
@@ -126,6 +127,7 @@ function getImages(url) {
         slidesData.forEach(item => {
             let elemImg = document.createElement('img');
             elemImg.classList.add('carousel-item');
+            isDesktop && elemImg.classList.add('desktop');
             elemImg.setAttribute('src', item.urls.regular);
 
             slider.appendChild(elemImg);
